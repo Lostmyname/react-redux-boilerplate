@@ -11,11 +11,7 @@ website, which isn't the easiest place to get started.
 - Express, to serve the content and mock API calls
 - React + Redux
 - Browser-sync + hot module reloading, like Eagle
-
-todo:
-
-- Tarantula
-- eagle styles and stuff
+- Chameleon!
 
 ## To install and run
 
