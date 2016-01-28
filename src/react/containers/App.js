@@ -5,7 +5,7 @@ var App = React.createClass({
 	render: function () {
 		return (
 			<div>
-				<HelloWorldCounter {...this.props} />
+				<HelloWorldCounter />
 			</div>
 		);
 	}
