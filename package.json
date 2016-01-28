@@ -1,0 +1,40 @@
+{
+  "name": "react-redux-boilerplate",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lostmyname/react-redux-boilerplate.git"
+  },
+  "author": "Callum Macrae <callum@macr.ae>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lostmyname/react-redux-boilerplate/issues"
+  },
+  "homepage": "https://github.com/lostmyname/react-redux-boilerplate#readme",
+  "dependencies": {
+    "babel-plugin-react-transform": "^2.0.0",
+    "babel-preset-react": "^6.3.13",
+    "browser-sync": "^2.11.1",
+    "classnames": "^2.2.3",
+    "find-node-modules-down": "^1.0.0",
+    "gulp": "gulpjs/gulp#4.0",
+    "livereactload": "^2.1.1",
+    "lmn-gulp-tasks": "^6.1.1",
+    "nodemon": "^1.8.1",
+    "react": "^0.14.6",
+    "react-dom": "^0.14.6",
+    "react-proxy": "^1.1.2",
+    "react-redux": "^4.0.6",
+    "redux": "^3.0.6",
+    "yargs": "^3.32.0"
+  },
+  "devDependencies": {
+    "express": "^4.13.4"
+  }
+}
