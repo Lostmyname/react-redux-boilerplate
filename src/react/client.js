@@ -5,12 +5,16 @@ import { Provider } from 'react-redux';
 
 import App from './containers/App';
 import reducer from './reducers/index';
+import DevTools from './containers/DevTools';
 
-var store = createStore(reducer);
+const store = DevTools.instrument()(createStore)(reducer);
 
 ReactDOM.render(
 	<Provider store={store}>
-		<App />
+		<div>
+			<App />
+			<DevTools />
+		</div>
 	</Provider>,
 	document.getElementById('root')
 );
