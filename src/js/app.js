@@ -21,7 +21,14 @@ const replace = [
 ];
 
 const store = createStore(reducer, {
-	cases: replace
+	cases: replace,
+	hidePassing: localStorage.getItem('hide-passing') === 'true'
+});
+
+store.subscribe(function () {
+	const state = store.getState();
+
+	localStorage.setItem('hide-passing', state.hidePassing);
 });
 
 ReactDOM.render(
