@@ -5,19 +5,30 @@ import ReplaceInput from '../components/ReplaceInput';
 import Cases from '../components/Cases';
 import { newInputRegex, newReplaceString } from '../actions/index';
 
-const App = (props) => (
-	<div>
-		<div className={props.type === 'replace' ? '' : 'single-input'}>
-			<RegexInput value={props.regexInput} onChange={props.handleInputChange} />
+const App = function (props) {
+	const stats = {
+		solved: props.cases.filter((testCase) => testCase.solved).length,
+		total: props.cases.length
+	};
 
-			{ props.type === 'replace' ? (
-				<ReplaceInput value={props.replaceString} onChange={props.handleReplaceChange} />
-			) : ''}
+	return (
+		<div>
+			<div className={props.type === 'replace' ? '' : 'single-input'}>
+				<RegexInput value={props.regexInput} onChange={props.handleInputChange} />
 
+				{ props.type === 'replace' ? (
+					<ReplaceInput value={props.replaceString} onChange={props.handleReplaceChange} />
+				) : ''}
+			</div>
+
+			<h3>
+				Test cases ({stats.solved}/{stats.total})
+			</h3>
+
+			<Cases cases={props.cases} type={props.type} />
 		</div>
-		<Cases cases={props.cases} type={props.type} />
-	</div>
-);
+	);
+};
 
 function mapStateToProps(state) {
 	return {

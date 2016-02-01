@@ -35,12 +35,7 @@ function cases(state, action) {
 		}
 	});
 
-	const stats = {
-		total: cases.length,
-		solved: cases.filter((testCase) => testCase.solved).length
-	};
-
-	return { cases, stats, beenValid: true };
+	return { cases, beenValid: true };
 }
 
 function regexInput(text = '', action) {
@@ -66,7 +61,6 @@ export default function(state = {}, action) {
 
 	return {
 		cases: casesResult.cases,
-		stats: casesResult.stats,
 		beenValid: casesResult.beenValid || false,
 		regexInput: regexInput(state.regexInput, action),
 		replaceString: replaceString(state.replaceString, action)
