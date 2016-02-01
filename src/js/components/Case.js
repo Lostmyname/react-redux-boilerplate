@@ -1,8 +1,8 @@
 import React from 'react';
 
-var Case = function (props) {
+const Case = function (props) {
 	// Or for undefined, undefined!
-	let className = ({
+	const className = ({
 		true: 'passed',
 		false: 'failed'
 	})[props.solved];

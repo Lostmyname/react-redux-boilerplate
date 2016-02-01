@@ -1,5 +1,5 @@
-export var NEW_REGEX = 'NEW_REGEX';
+export const NEW_REGEX = 'NEW_REGEX';
 
-export var newRegex = function (regexString) {
+export const newRegex = function (regexString) {
 	return { type: NEW_REGEX, regexString };
 };

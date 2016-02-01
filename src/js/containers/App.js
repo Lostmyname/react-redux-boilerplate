@@ -4,7 +4,7 @@ import RegexInput from '../components/RegexInput';
 import Cases from '../components/Cases';
 import { newRegex } from '../actions/index';
 
-var App = (props) => (
+const App = (props) => (
 	<div>
 		<div className="single-input">
 			<RegexInput value={props.regexInput} onChange={props.handleInputChange} />

@@ -1,6 +1,6 @@
 import React from 'react';
 
-var RegexInput = (props) => (
+const RegexInput = (props) => (
 	<input {...props} placeholder="/regexp? here/i" />
 );
 

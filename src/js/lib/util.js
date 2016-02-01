@@ -1,5 +1,5 @@
 export function stringToRegex(regexString) {
-	let regex = /^\/(.*)\/([a-z]*)$/.exec(regexString);
+	const regex = /^\/(.*)\/([a-z]*)$/.exec(regexString);
 
 	if (!regex) {
 		return null;

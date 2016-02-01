@@ -6,7 +6,7 @@ function cases(state, action) {
 		return state;
 	}
 
-	let regex = stringToRegex(action.regexString);
+	const regex = stringToRegex(action.regexString);
 
 	if (!regex) {
 		if (!state.beenValid) {
@@ -15,19 +15,19 @@ function cases(state, action) {
 
 		// If the regular expression is invalid and has been valid in the past,
 		// set them all to false
-		let casesFailed = state.cases.map(function (testCase) {
+		const casesFailed = state.cases.map(function (testCase) {
 			return Object.assign({}, testCase, { solved: false });
 		});
 
 		return Object.assign({}, state, { cases: casesFailed });
 	}
 
-	let cases = state.cases.map(function (testCase) {
-		let solved = regex.test(testCase.input) === testCase.output;
+	const cases = state.cases.map(function (testCase) {
+		const solved = regex.test(testCase.input) === testCase.output;
 		return Object.assign({}, testCase, { solved });
 	});
 
-	let stats = {
+	const stats = {
 		total: cases.length,
 		solved: cases.filter((testCase) => testCase.solved).length
 	};
@@ -46,7 +46,7 @@ function regexInput(text = '', action) {
 // We're not using combineReducers because `cases` is updating multiple props
 // of the state so we have to pass the entire thing in
 export default function(state = {}, action) {
-	let casesResult = cases(state, action);
+	const casesResult = cases(state, action);
 
 	return {
 		cases: casesResult.cases,
