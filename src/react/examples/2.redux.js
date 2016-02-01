@@ -6,7 +6,7 @@ import { createStore } from 'redux';
 
 var reducer = function (state = 1, action) {
   switch action.type {
-    case 'INCREMENT':
+    case 'UPDATE_COUNT':
       return state + 1;
 
     case default:
@@ -27,7 +27,7 @@ var store = createStore(reducer, initialState);
 // from the reducer we defined
 
 store.dispatch({
-  type: 'INCREMENT'
+  type: 'UPDATE_COUNT'
 });
 
 // We can check that this worked by retrieving the new state

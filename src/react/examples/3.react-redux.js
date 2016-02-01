@@ -32,7 +32,9 @@ var mapStateToProps = function (state) {
 var mapDispatchToProps = function (dispatch) {
   var eventProps = {
     handleClick: function () {
-      dispatch(updateCount())
+      dispatch({
+        type: 'UPDATE_COUNT'
+      });
     }
   };
   return eventProps;
