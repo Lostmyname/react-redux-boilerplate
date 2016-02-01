@@ -9,10 +9,10 @@ import reducer from './reducers/index';
 
 const store = DevTools.instrument()(createStore)(reducer, {
 	cases: [
-		{ input: '123', output: true, solved: false },
-		{ input: '456', output: true, solved: false },
-		{ input: 'number', output: false, solved: false },
-		{ input: 'aaa', output: false, solved: false }
+		{ input: '123', output: true },
+		{ input: '456', output: true },
+		{ input: 'number', output: false },
+		{ input: 'aaa', output: false }
 	]
 });
 
