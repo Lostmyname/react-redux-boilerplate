@@ -34,9 +34,6 @@
     "react-proxy": "^1.1.2",
     "react-redux": "^4.0.6",
     "redux": "^3.0.6",
-    "redux-devtools": "^3.0.1",
-    "redux-devtools-dock-monitor": "^1.0.1",
-    "redux-devtools-log-monitor": "^1.0.2",
     "yargs": "^3.32.0"
   },
   "devDependencies": {

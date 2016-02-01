@@ -4,7 +4,6 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 
 import App from './containers/App';
-import DevTools from './containers/DevTools';
 import reducer from './reducers/index';
 
 const match = [
@@ -21,16 +20,13 @@ const replace = [
 	{ input: 'This test test is is', output: 'This test <strong>test</strong> is <strong>is</strong>' }
 ];
 
-const store = DevTools.instrument()(createStore)(reducer, {
+const store = createStore(reducer, {
 	cases: replace
 });
 
 ReactDOM.render(
 	<Provider store={store}>
-		<div>
-			<App type="replace" />
-			<DevTools />
-		</div>
+		<App type="replace" />
 	</Provider>,
 	document.getElementById('react-root')
 );
