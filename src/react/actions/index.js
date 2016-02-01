@@ -1,7 +1,5 @@
-export var UPDATE_COUNT = 'UPDATE_COUNT';
+export var NEW_REGEX = 'NEW_REGEX';
 
-export var updateCount = function () {
-	return {
-		type: UPDATE_COUNT
-	};
+export var newRegex = function (regexString) {
+	return { type: NEW_REGEX, regexString };
 };

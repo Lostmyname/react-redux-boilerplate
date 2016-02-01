@@ -1,14 +1,27 @@
 import React from 'react';
-import HelloWorldCounter from '../components/HelloWorldCounter';
+import { connect } from 'react-redux';
+import RegexInput from '../components/RegexInput';
+import Cases from '../components/Cases';
+import { newRegex } from '../actions/index';
 
-var App = React.createClass({
-	render: function () {
-		return (
-			<div>
-				<HelloWorldCounter />
-			</div>
-		);
+var App = (props) => (
+	<div>
+		<RegexInput value={props.regexInput} onChange={props.handleInputChange} />
+		<Cases cases={props.cases} />
+	</div>
+);
+
+function mapStateToProps(state) {
+	return {
+		regexInput: state.regexInput,
+		cases: state.cases
 	}
-});
+}
 
-export default App;
+function mapDispatchToProps(dispatch) {
+	return {
+		handleInputChange: (e) => dispatch(newRegex(e.target.value))
+	};
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
