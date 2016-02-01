@@ -26,6 +26,14 @@
 		Public domain. Site by <a href="http://macr.ae/">Callum Macrae</a>.
 	</footer>
 
+	<!--<script type="text/x-case-data">-->
+		<!--[{"input":"123","output":true},{"input":"456","output":true},{"input":"number","output":false},{"input":"aaa","output":false}]-->
+	<!--</script>-->
+
+	<script type="text/x-case-data">
+		[{"input":"This is a test","output":"This is a test"},{"input":"This is is a test","output":"This is <strong>is</strong> a test"},{"input":"This this test is a test","output":"This <strong>this</strong> test is a test"},{"input":"This test test is is","output":"This test <strong>test</strong> is <strong>is</strong>"}]
+	</script>
+
 	<script src="assets/js/app.js"></script>
 </body>
 </html>

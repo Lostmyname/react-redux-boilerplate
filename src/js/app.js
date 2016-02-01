@@ -6,24 +6,11 @@ import { Provider } from 'react-redux';
 import App from './containers/App';
 import reducer from './reducers/index';
 
-const match = [
-	{ input: '123', output: true },
-	{ input: '456', output: true },
-	{ input: 'number', output: false },
-	{ input: 'aaa', output: false }
-];
-
-const replace = [
-	{ input: 'This is a test', output: 'This is a test' },
-	{ input: 'This is is a test', output: 'This is <strong>is</strong> a test' },
-	{ input: 'This this test is a test', output: 'This <strong>this</strong> test is a test' },
-	{ input: 'This test test is is', output: 'This test <strong>test</strong> is <strong>is</strong>' }
-];
-
-let testThis = replace;
+const caseDataElement = document.querySelector('[type="text/x-case-data"]');
+const cases = JSON.parse(caseDataElement.textContent);
 
 const store = createStore(reducer, {
-	cases: testThis,
+	cases,
 	hidePassing: localStorage.getItem('hide-passing') === 'true'
 });
 
@@ -35,7 +22,7 @@ store.subscribe(function () {
 
 ReactDOM.render(
 	<Provider store={store}>
-		<App type={typeof testThis[0].output === 'boolean' ? 'match' : 'replace'} />
+		<App type={typeof cases[0].output === 'boolean' ? 'match' : 'replace'} />
 	</Provider>,
 	document.getElementById('react-root')
 );
