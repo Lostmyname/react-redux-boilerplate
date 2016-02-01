@@ -23,5 +23,5 @@ ReactDOM.render(
 			<DevTools />
 		</div>
 	</Provider>,
-	document.getElementById('root')
+	document.getElementById('react-root')
 );

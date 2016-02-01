@@ -8,38 +8,23 @@ var argv = require('yargs').argv;
 
 var buildPath = 'public/assets';
 
-function resolvePath(filename) {
-	return path.join('assets/images', filename);
-}
 
 var jsOpts = {
-	src: './src/js/script.js',
-	dest: path.join(buildPath, 'js/bundle.js'),
+	src: './src/js/app.js',
+	dest: path.join(buildPath, 'js/app.js'),
 	react: true,
-	resolvePath: resolvePath
+	jquery: false
 };
-var jsOptsWatch = Object.assign({}, jsOpts, { watch: true });
-
-var jsReactClientOpts = {
-	src: './src/react/client.js',
-	dest: path.join(buildPath, 'js/client.js'),
-	react: true,
-	jquery: false,
-	resolvePath: resolvePath
-};
-var jsReactClientOptsWatch = Object.assign({}, jsReactClientOpts, {
+var jsOptsWatch = Object.assign({}, jsOpts, {
 	watch: true, hotModuleReloading: true
 });
 
 gulp.task('js', getTask('browserify', jsOpts));
-gulp.task('js-react-client', getTask('browserify', jsReactClientOpts));
-
 gulp.task('js-watch', getTask('browserify', jsOptsWatch));
-gulp.task('js-watch-react-client', getTask('browserify', jsReactClientOptsWatch));
 
 
 gulp.task('scss', getTask('scss', {
-	src: './src/scss/styles-react.scss',
+	src: './src/scss/styles.scss',
 	dest: path.join(buildPath, 'stylesheets'),
 	imagePath: '/assets/images',
 	includePaths: findModulesDown()
@@ -49,7 +34,7 @@ gulp.task('js-quality', getTask('js-quality', {
 	src: ['./src/**/*.js', '!./src/**/*.min.js', 'gulpfile.js']
 }));
 
-gulp.task('watchers', gulp.series('js-watch', 'js-watch-react-client', function () {
+gulp.task('watchers', gulp.series('js-watch', function () {
 	gulp.watch('./src/**/*.{sass,scss}', gulp.series('scss'));
 
 	if (argv.nodemon !== false) {
@@ -63,7 +48,6 @@ gulp.task('watchers', gulp.series('js-watch', 'js-watch-react-client', function 
 
 	var files = [
 		path.join(buildPath, 'stylesheets/*.css'),
-		'src/images/**/*.{png,jpg,gif,svg}',
 		path.join(buildPath, 'index.html')
 	];
 
@@ -73,5 +57,5 @@ gulp.task('watchers', gulp.series('js-watch', 'js-watch-react-client', function 
 }));
 
 gulp.task('lint', gulp.series('js-quality'));
-gulp.task('build', gulp.parallel('js', 'js-react-client', 'scss'));
+gulp.task('build', gulp.parallel('js', 'scss'));
 gulp.task('default', gulp.series('lint', 'build', 'watchers'));

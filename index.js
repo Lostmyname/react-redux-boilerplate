@@ -5,7 +5,6 @@ var argv = require('yargs').argv;
 var app = express();
 
 app.use(express.static('public'));
-app.use('/assets/images', express.static('src/images'));
 
 var server = app.listen(argv.port || 0, function () {
 	var serverAddress = server.address();
