@@ -9,7 +9,17 @@ function cases(state, action) {
 	let regex = stringToRegex(action.regexString);
 
 	if (!regex) {
-		return state;
+		if (!state.beenValid) {
+			return state;
+		}
+
+		// If the regular expression is invalid and has been valid in the past,
+		// set them all to false
+		let casesFailed = state.cases.map(function (testCase) {
+			return Object.assign({}, testCase, { solved: false });
+		});
+
+		return Object.assign({}, state, { cases: casesFailed });
 	}
 
 	let cases = state.cases.map(function (testCase) {
@@ -22,7 +32,7 @@ function cases(state, action) {
 		solved: cases.filter((testCase) => testCase.solved).length
 	};
 
-	return { cases, stats };
+	return { cases, stats, beenValid: true };
 }
 
 function regexInput(text = '', action) {
@@ -41,6 +51,7 @@ export default function(state = {}, action) {
 	return {
 		cases: casesResult.cases,
 		stats: casesResult.stats,
+		beenValid: casesResult.beenValid || false,
 		regexInput: regexInput(state.regexInput, action)
 	}
 }
