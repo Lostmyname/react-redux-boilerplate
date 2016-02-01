@@ -44,7 +44,7 @@ function mapStateToProps(state) {
 		replaceString: state.replaceString,
 		cases: state.cases,
 		hidePassing: state.hidePassing
-	}
+	};
 }
 
 function mapDispatchToProps(dispatch) {
