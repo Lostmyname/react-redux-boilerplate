@@ -4,7 +4,7 @@ import Case from './Case';
 const Cases = (props) => (
 	<dl id="tests">
 		{props.cases.map((testCase) => (
-			<Case key={testCase.input} {...testCase} />
+			<Case key={testCase.input} {...testCase} type={props.type} />
 		))}
 	</dl>
 );

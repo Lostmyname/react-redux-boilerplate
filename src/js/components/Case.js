@@ -7,10 +7,19 @@ const Case = function (props) {
 		false: 'failed'
 	})[props.solved];
 
+	const outputText = ({
+		match: props.output ? 'Should match' : 'Should not match',
+		replace: props.output
+	})[props.type];
+
 	return (
 		<div>
 			<dt className={className}>{props.input}</dt>
-			<dd className={className}>{props.output ? 'Should match' : 'Should not match'}</dd>
+			<dd className={className}>{outputText}</dd>
+
+			{ typeof props.result === 'string' && !props.solved ? (
+					<dd>{props.result}</dd>
+			) : ''}
 		</div>
 	);
 };

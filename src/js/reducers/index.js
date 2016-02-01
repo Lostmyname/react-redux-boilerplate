@@ -2,11 +2,12 @@ import { stringToRegex } from '../lib/util';
 import * as actions from '../actions/index';
 
 function cases(state, action) {
-	if (action.type !== actions.NEW_REGEX) {
+	if (action.type !== actions.NEW_INPUT_REGEX && action.type !== actions.NEW_REPLACE_STRING) {
 		return state;
 	}
 
-	const regex = stringToRegex(action.regexString);
+	const regex = stringToRegex(action.regexString || state.regexInput);
+	const replace = action.replaceString || state.replaceString;
 
 	if (!regex) {
 		if (!state.beenValid) {
@@ -23,8 +24,15 @@ function cases(state, action) {
 	}
 
 	const cases = state.cases.map(function (testCase) {
-		const solved = regex.test(testCase.input) === testCase.output;
-		return Object.assign({}, testCase, { solved });
+		if (typeof testCase.output === 'string') {
+			const result = testCase.input.replace(regex, replace);
+			const solved = result === testCase.output;
+
+			return Object.assign({}, testCase, { result, solved });
+		} else {
+			const solved = regex.test(testCase.input) === testCase.output;
+			return Object.assign({}, testCase, { solved });
+		}
 	});
 
 	const stats = {
@@ -36,11 +44,19 @@ function cases(state, action) {
 }
 
 function regexInput(text = '', action) {
-	if (action.type !== actions.NEW_REGEX) {
+	if (action.type !== actions.NEW_INPUT_REGEX) {
 		return text;
 	}
 
 	return action.regexString;
+}
+
+function replaceString(text = '', action) {
+	if (action.type !== actions.NEW_REPLACE_STRING) {
+		return text;
+	}
+
+	return action.replaceString;
 }
 
 // We're not using combineReducers because `cases` is updating multiple props
@@ -52,6 +68,7 @@ export default function(state = {}, action) {
 		cases: casesResult.cases,
 		stats: casesResult.stats,
 		beenValid: casesResult.beenValid || false,
-		regexInput: regexInput(state.regexInput, action)
+		regexInput: regexInput(state.regexInput, action),
+		replaceString: replaceString(state.replaceString, action)
 	}
 }

@@ -1,5 +1,11 @@
-export const NEW_REGEX = 'NEW_REGEX';
+export const NEW_INPUT_REGEX = 'NEW_INPUT_REGEX';
 
-export const newRegex = function (regexString) {
-	return { type: NEW_REGEX, regexString };
+export const newInputRegex = function (regexString) {
+	return { type: NEW_INPUT_REGEX, regexString };
+};
+
+export const NEW_REPLACE_STRING = 'NEW_REPLACE_STRING';
+
+export const newReplaceString = function (replaceString) {
+	return { type: NEW_REPLACE_STRING, replaceString };
 };
