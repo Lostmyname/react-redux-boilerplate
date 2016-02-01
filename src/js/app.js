@@ -20,8 +20,10 @@ const replace = [
 	{ input: 'This test test is is', output: 'This test <strong>test</strong> is <strong>is</strong>' }
 ];
 
+let testThis = replace;
+
 const store = createStore(reducer, {
-	cases: replace,
+	cases: testThis,
 	hidePassing: localStorage.getItem('hide-passing') === 'true'
 });
 
@@ -33,7 +35,7 @@ store.subscribe(function () {
 
 ReactDOM.render(
 	<Provider store={store}>
-		<App type="replace" />
+		<App type={typeof testThis[0].output === 'boolean' ? 'match' : 'replace'} />
 	</Provider>,
 	document.getElementById('react-root')
 );
