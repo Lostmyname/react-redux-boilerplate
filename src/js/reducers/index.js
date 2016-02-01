@@ -54,6 +54,14 @@ function replaceString(text = '', action) {
 	return action.replaceString;
 }
 
+function hidePassing(hide, action) {
+	if (action.type !== actions.HIDE_PASSING_CHANGE) {
+		return hide;
+	}
+
+	return action.hidePassing;
+}
+
 // We're not using combineReducers because `cases` is updating multiple props
 // of the state so we have to pass the entire thing in
 export default function(state = {}, action) {
@@ -63,6 +71,7 @@ export default function(state = {}, action) {
 		cases: casesResult.cases,
 		beenValid: casesResult.beenValid || false,
 		regexInput: regexInput(state.regexInput, action),
-		replaceString: replaceString(state.replaceString, action)
+		replaceString: replaceString(state.replaceString, action),
+		hidePassing: hidePassing(state.hidePassing, action)
 	}
 }

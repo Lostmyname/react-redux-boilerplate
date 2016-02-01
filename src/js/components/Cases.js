@@ -3,9 +3,15 @@ import Case from './Case';
 
 const Cases = (props) => (
 	<dl id="tests">
-		{props.cases.map((testCase) => (
-			<Case key={testCase.input} {...testCase} type={props.type} />
-		))}
+		{props.cases.map(function (testCase) {
+			if (testCase.solved && props.hidePassing) {
+				return '';
+			}
+
+			return (
+				<Case key={testCase.input} {...testCase} type={props.type} />
+			)
+		})}
 	</dl>
 );
 
