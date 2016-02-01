@@ -1,7 +1,7 @@
 import React from 'react';
 
 var RegexInput = (props) => (
-	<input value={props.value} onChange={props.onChange} />
+	<input {...props} placeholder="/regexp? here/i" />
 );
 
 export default RegexInput;

@@ -2,11 +2,11 @@ import React from 'react';
 import Case from './Case';
 
 var Cases = (props) => (
-	<div>
+	<dl id="tests">
 		{props.cases.map((testCase) => (
 			<Case key={testCase.input} {...testCase} />
 		))}
-	</div>
+	</dl>
 );
 
 export default Cases;

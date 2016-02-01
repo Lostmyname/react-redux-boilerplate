@@ -6,7 +6,9 @@ import { newRegex } from '../actions/index';
 
 var App = (props) => (
 	<div>
-		<RegexInput value={props.regexInput} onChange={props.handleInputChange} />
+		<div className="single-input">
+			<RegexInput value={props.regexInput} onChange={props.handleInputChange} />
+		</div>
 		<Cases cases={props.cases} />
 	</div>
 );

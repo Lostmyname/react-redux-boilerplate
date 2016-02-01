@@ -2,9 +2,8 @@ import React from 'react';
 
 var Case = (props) => (
 	<div>
-		<p>Input: {props.input}</p>
-		<p>{props.output ? 'Should match' : 'Should not match'}</p>
-		<p>Solved: {props.solved.toString()}</p>
+		<dt className={props.solved ? 'passed' : 'failed'}>{props.input}</dt>
+		<dd className={props.solved ? 'passed' : 'failed'}>{props.output ? 'Should match' : 'Should not match'}</dd>
 	</div>
 );
 
