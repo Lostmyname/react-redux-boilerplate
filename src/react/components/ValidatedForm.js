@@ -27,10 +27,11 @@ var ValidatedForm = React.createClass({
 			this.props.onInvalidSubmit(e);
 		}
 	},
-	getInitialState: function () {
-		let map = new Map();
-
-		let children = React.Children.map(this.props.children, (child) => {
+	cloneChildren: function (children, map = this.state.map) {
+		return React.Children.map(children, (child) => {
+			if (!React.isValidElement(child)) {
+				return child;
+			}
 			if (child.type !== Validator) {
 				return child;
 			}
@@ -50,10 +51,20 @@ var ValidatedForm = React.createClass({
 				}
 			});
 
-			map.set(key, { dirty: false });
+			if (!map.has(key)) {
+				map.set(key, { dirty: false });
+			}
 
 			return newChild;
 		});
+	},
+	componentWillReceiveProps: function (props) {
+		let children = this.cloneChildren(props.children);
+		this.setState({ children });
+	},
+	getInitialState: function () {
+		let map = new Map();
+		let children = this.cloneChildren(this.props.children, map);
 
 		return { map, children };
 	},

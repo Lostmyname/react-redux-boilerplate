@@ -7,9 +7,9 @@ import * as actions from '../actions';
 
 var App = React.createClass({
 	inputValid: (val) => val.length >= 3,
+	inputExists: (val) => !!val,
 	showAdventurer: function () {
 		this.setState({ showAdventurer: true });
-
 	},
 	getInitialState: function () {
 		return { showAdventurer: false, hello: 'no' };
@@ -21,24 +21,14 @@ var App = React.createClass({
 	handleInvalidSubmit: function () {
 		console.log('Invalid submit :(');
 	},
-	componentDidUpdate: function () {
-		console.log(this.state);
-	},
 	render: function () {
-		console.log(this.state.showAdventurer);
-
 		return (
-				<div>
-				{this.state.hello}
 			<ValidatedForm onSubmit={this.handleSubmit} onInvalidSubmit={this.handleInvalidSubmit}>
-
 
 				Name:
 				<Validator predicate={this.inputValid}>
 					<input name="name" type="text" />
 				</Validator>
-
-				{log(this.state)}
 
 				Gender:
 				<Validator predicate={this.inputValid} onChange={this.showAdventurer}>
@@ -46,22 +36,21 @@ var App = React.createClass({
 					Boy: <input type="radio" name="gender" value="boy" />
 				</Validator>
 
-				{ !this.state.showAdventurer ? (
-					<p key="anything">hello{log(this.state.showAdventurer)}</p>
+				{ this.state.showAdventurer ? (
+						<Validator predicate={this.inputExists}>
+						Adventurer:
+							I: <input type="radio" name="adventurer" value="i" />
+							II: <input type="radio" name="adventurer" value="ii" />
+							VI: <input type="radio" name="adventurer" value="vi" />
+						</Validator>
 				) : null}
 
 				<button>Submit</button>
 
 			</ValidatedForm>
-					</div>
 		);
 	}
 });
-
-function log(a) {
-	console.log(a);
-	return JSON.stringify(a);
-}
 
 
 function mapStateToProps(state) {
