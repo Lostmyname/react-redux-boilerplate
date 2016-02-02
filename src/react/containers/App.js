@@ -15,7 +15,6 @@ var App = React.createClass({
 		return { showAdventurer: false, hello: 'no' };
 	},
 	handleSubmit: function () {
-		this.setState({ hello: 'world' });
 		console.log('Submit!!');
 	},
 	handleInvalidSubmit: function () {
