@@ -38,7 +38,7 @@ gulp.task('watchers', gulp.series('js-watch', function () {
 	gulp.watch('./src/**/*.{sass,scss}', gulp.series('scss'));
 
 	if (argv.nodemon !== false) {
-		nodemon('--watch index.js index.js --port 4050 --silentStartup')
+		nodemon('--watch index.js --watch data.json index.js --port 4050 --silentStartup')
 				.on('start', console.log.bind(console, 'Started!'))
 				.on('quit', console.log.bind(console, 'App has quit, press cmd+c to exit gulp'))
 				.on('restart', function () {

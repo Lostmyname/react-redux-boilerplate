@@ -1,0 +1,26 @@
+{
+  "challenges": [
+    {
+      "number": "One",
+      "description": "yay challenge number one! :D",
+      "cases": [
+        {"input":"This is a test","output":"This is a test"},
+        {"input":"This is is a test","output":"This is <strong>is</strong> a test"},
+        {"input":"This this test is a test","output":"This <strong>this</strong> test is a test"},
+        {"input":"This test test is is","output":"This test <strong>test</strong> is <strong>is</strong>"}
+      ]
+    },
+    {
+      "number": "Two",
+      "description": "Numbers and stuff",
+      "cases": [
+        {"input":"123","output":true},
+        {"input":"456","output":true},
+        {"input":"7,890","output":true},
+        {"input":"number","output":false},
+        {"input":"aaa","output":false},
+        {"input":"two2two","output":false}
+      ]
+    }
+  ]
+}

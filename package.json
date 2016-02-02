@@ -29,6 +29,7 @@
     "lmn-gulp-tasks": "^6.1.1",
     "lmn.tarantula": "^0.8.4",
     "nodemon": "^1.8.1",
+    "nunjucks": "^2.3.0",
     "react": "^0.14.6",
     "react-dom": "^0.14.6",
     "react-proxy": "^1.1.2",
